@@ -1,7 +1,6 @@
 package application;
 
 import javafx.animation.TranslateTransition;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -20,24 +19,23 @@ import javafx.scene.shape.Rectangle;
  *
  */
 
-public class Jogo extends Application {
+public class Jogo extends Stage {
 
-	int posXmario = 100, posYmario = 150, alturaMario = 30;
+	private int posXmario = 100, posYmario = 150, alturaMario = 30;
 	
-	private static boolean player2;
-	int posXluigi = 20, posYluigi = 150, alturaLuigi = 30;
+	private boolean player2;
+	private int posXluigi = 20, posYluigi = 150, alturaLuigi = 30;
 	
-	@Override
-	public void start(Stage primaryStage) {
+	public void exibir() {
 		try {
 
 			BorderPane root = new BorderPane();
 			Scene scene = new Scene(root,450,214);
 
 			// cenário
-			Image fundo = new Image("img/background.png");
-			Rectangle chao = new Rectangle(0,0,450,214);
-			chao.setFill(new ImagePattern(fundo));
+			Image fundoImg = new Image("img/background.png");
+			Rectangle fundo = new Rectangle(0,0,450,214);
+			fundo.setFill(new ImagePattern(fundoImg));
 
 			// mario			
 			Image marioImg = new Image("img/mario.png");
@@ -60,7 +58,7 @@ public class Jogo extends Application {
 				@Override
 				public void handle(KeyEvent event) {
 					if (event.getCode().equals(KeyCode.ESCAPE)) {
-						primaryStage.close();
+						close();
 					}
 					
 					if (event.getCode().equals(KeyCode.RIGHT)) {
@@ -119,21 +117,22 @@ public class Jogo extends Application {
 			});
 			
 			// adicionando elementos na tela
-			root.getChildren().add(chao);
+			root.getChildren().add(fundo);
 			root.getChildren().add(mario);
 			if(player2)	root.getChildren().add(luigi);
 			
 			// configuração da janela
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Super Block Bros");
-			primaryStage.show();
+			this.setScene(scene);
+			this.setTitle("Super Mario Bros");
+			this.show();
 			
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void setQuantPlayers(int quant) {
+	public void setQuantPlayers(int quant) {
 		switch (quant) {
 		case 1:
 			player2 = false;
@@ -144,9 +143,5 @@ public class Jogo extends Application {
 		default:
 			break;
 		}
-	}
-	
-	public static void executar() {
-		launch();
 	}
 }
