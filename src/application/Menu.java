@@ -1,17 +1,13 @@
 package application;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 /**
  * 
@@ -19,22 +15,17 @@ import javafx.stage.Stage;
  *
  */
 
-public class Menu extends Stage {
-
+public class Menu extends Scene {
+	
 	private int menu = 1;
 	private Label umJogador, doisJogadores;
 
-	private Jogo jogo = new Jogo();
-	
-	public void exibir(){
-		
+	public Menu(Pane root, double width, double height) {
+		super(root, width, height);
+
 		try {
-			
-			Pane root = new Pane();
-			Scene scene = new Scene(root,450,214);
-			
 			// fundo
-			Rectangle fundo = new Rectangle(scene.getWidth(),scene.getHeight());
+			Rectangle fundo = new Rectangle(this.getWidth(),this.getHeight());
 			Image fundoImg = new Image("img/background.png");
 			fundo.setFill(new ImagePattern(fundoImg));
 			root.getChildren().add(fundo);
@@ -46,7 +37,7 @@ public class Menu extends Stage {
 			
 			// menu
 			Font fonte = Font.loadFont(Menu.class.getResource("/font/ARCADECLASSIC.TTF").toExternalForm(), 16);
-
+			
 			umJogador = new Label("1 jogador");
 			umJogador.setLayoutX(150);
 			umJogador.setLayoutY(120);
@@ -59,42 +50,17 @@ public class Menu extends Stage {
 			
 			navegarMenu(menu);
 			
-			// eventos			
-			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-				@Override
-				public void handle(KeyEvent event) {
-					if(event.getCode().equals(KeyCode.UP) || event.getCode().equals(KeyCode.DOWN)) {
-						switch (menu) {
-						case 1:
-							menu = 2;
-							navegarMenu(menu);
-							break;
-						default:
-							menu = 1;
-							navegarMenu(menu);
-							break;
-						}
-					}
-					if(event.getCode().equals(KeyCode.ENTER)) {
-						jogo.setQuantPlayers(getModoDeJogo());
-						hide();
-						jogo.exibir();
-					}
-				}
-			});
-			
 			root.getChildren().addAll(umJogador,doisJogadores);
-
-			// janela			
-			this.setScene(scene);
-			this.setTitle("Super Mario Bros");
-			this.show();
+	
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void setModoDeJogo(int menu) {
+		this.menu = menu;
+	}
 	public int getModoDeJogo() {
 		return menu;
 	}
