@@ -1,8 +1,6 @@
 package application;
 
 import javafx.animation.TranslateTransition;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -24,16 +22,16 @@ public class Personagem extends Rectangle {
 	private void setImage(int personagem) {
 		switch (personagem) {
 		case 0:
-			this.setFill(new ImagePattern(new Image("img/marioDireita.png")));
+			this.setFill(PersonagemImg.MARIO_DIREITA.getImg());
 			break;
 		case 1:
-			this.setFill(new ImagePattern(new Image("img/luigiDireita.png")));
+			this.setFill(PersonagemImg.LUIGI_DIREITA.getImg());
 			break;
 		case 2:
-			this.setFill(new ImagePattern(new Image("img/marioEsquerda.png")));
+			this.setFill(PersonagemImg.MARIO_ESQUERDA.getImg());
 			break;
 		case 3:
-			this.setFill(new ImagePattern(new Image("img/luigiEsquerda.png")));
+			this.setFill(PersonagemImg.LUIGI_ESQUERDA.getImg());
 			break;
 		}
 	}
