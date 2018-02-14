@@ -18,7 +18,7 @@ import javafx.scene.text.Font;
 public class Menu extends Scene {
 	
 	private int menu = 1;
-	private Label umJogador, doisJogadores;
+	private Label umJogador, doisJogadores, autor;
 
 	public Menu(Pane root, double width, double height) {
 		super(root, width, height);

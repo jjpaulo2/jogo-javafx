@@ -61,4 +61,8 @@ public class Jogo extends Scene {
 			break;
 		}
 	}
+	
+	public void confirmar() {
+		System.out.println("Desenvolvido por João Paulo Carvalho - GitHub @jjpaulo2");
+	}
 }

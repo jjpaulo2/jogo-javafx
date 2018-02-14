@@ -39,6 +39,7 @@ public class Main extends Application {
 					jogo.setQuantPlayers(menu.getModoDeJogo());
 					jogo.plotarJogadores(paneJogo);
 					primaryStage.setScene(jogo);
+					jogo.confirmar();
 				}
 				
 				if(event.getCode().equals(KeyCode.UP) || event.getCode().equals(KeyCode.DOWN)) {
@@ -61,6 +62,7 @@ public class Main extends Application {
 			public void handle(KeyEvent event) {
 				if (event.getCode().equals(KeyCode.ESCAPE)) {
 					primaryStage.setScene(menu);
+					jogo.confirmar();
 				}
 				
 				if (event.getCode().equals(KeyCode.RIGHT)) {

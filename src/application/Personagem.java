@@ -4,6 +4,12 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+/**
+ * 
+ * @author jjpaulo2
+ *
+ */
+
 public class Personagem extends Rectangle {
 
 	private TranslateTransition pulo = new TranslateTransition(Duration.millis(500), this);

@@ -3,6 +3,12 @@ package application;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
+/**
+ * 
+ * @author jjpaulo2
+ *
+ */
+
 public enum PersonagemImg {
 	
 	MARIO_DIREITA(new ImagePattern(new Image("img/marioDireita.png"))),
